@@ -4,28 +4,23 @@ FROM openjdk:17-jdk-slim
 # Set working directory
 WORKDIR /app
 
-# Copy the Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
+# Copy Maven files
 COPY pom.xml .
 
-# Make mvnw executable
-RUN chmod +x mvnw
-
-# Download dependencies
-RUN ./mvnw dependency:go-offline -B
+# Install Maven
+RUN apt-get update && apt-get install -y maven
 
 # Copy source code
-COPY src src
+COPY src ./src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Create upload directories
 RUN mkdir -p uploads/pictures uploads/videos
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8090
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "target/whatsapp-messenger-backend-1.0.0.jar"] 
+CMD ["java", "-jar", "target/whatsapp-messenger-backend-1.0.0.jar"] 

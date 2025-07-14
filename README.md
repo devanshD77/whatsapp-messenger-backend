@@ -112,7 +112,34 @@ mvn spring-boot:run
 - **Swagger UI**: http://localhost:8090/api/swagger-ui.html
 - **API Base URL**: http://localhost:8090/api
 
-## 📚 API Documentation
+## 🌐 Free Deployment
+
+### Quick Deploy to Railway (Recommended)
+
+1. **Push to GitHub**: Ensure your code is in a GitHub repository
+2. **Sign up at Railway**: [railway.app](https://railway.app)
+3. **Deploy**: Connect your GitHub repo and Railway will auto-deploy
+4. **Add PostgreSQL**: Railway will auto-provision a database
+5. **Set Environment Variables**:
+   ```
+   JWT_SECRET=your-super-secure-jwt-secret-key-here
+   PORT=8090
+   ```
+
+### Alternative Platforms
+- **Render**: [render.com](https://render.com) - 750 hours/month free
+- **Fly.io**: [fly.io](https://fly.io) - 3 VMs free
+
+### Deployment Files Included
+- `railway.json` - Railway configuration
+- `nixpacks.toml` - Build configuration  
+- `Procfile` - Process definition
+- `Dockerfile` - Container configuration
+- `DEPLOYMENT.md` - Detailed deployment guide
+
+**Note**: Free tiers don't support Kafka. The app will work without Kafka (event publishing disabled).
+
+## �� API Documentation
 
 ### Authentication Endpoints
 
