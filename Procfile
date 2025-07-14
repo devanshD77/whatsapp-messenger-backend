@@ -1,0 +1,1 @@
+web: java -jar target/whatsapp-messenger-backend-1.0.0.jar 

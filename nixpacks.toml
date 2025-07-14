@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["openjdk17", "maven"]
+
+[phases.install]
+cmds = ["mvn clean package -DskipTests"]
+
+[phases.build]
+cmds = ["mkdir -p uploads/pictures uploads/videos"]
+
+[start]
+cmd = "java -jar target/whatsapp-messenger-backend-1.0.0.jar" 
