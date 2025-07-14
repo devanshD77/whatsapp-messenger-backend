@@ -36,8 +36,8 @@ A comprehensive WhatsApp-like chat backend built with Spring Boot, featuring rea
 
 ## 🛠 Tech Stack
 
-- **Framework**: Spring Boot 3.2.0
-- **Language**: Java 17
+- **Framework**: Spring Boot 3.5.0
+- **Language**: Java 21
 - **Database**: PostgreSQL with JPA/Hibernate
 - **Message Queue**: Apache Kafka
 - **Authentication**: JWT (JSON Web Tokens)
