@@ -17,6 +17,7 @@ Your repository should now have these files:
 - `nixpacks.toml` - Build configuration
 - `Procfile` - Process definition
 - `Dockerfile` - Container configuration (✅ Fixed)
+- `DatabaseConfig.java` - Railway database configuration (✅ Added)
 - Updated `application.properties` - Environment variables
 
 ### Step 2: Deploy to Railway
@@ -40,6 +41,7 @@ Your repository should now have these files:
    JWT_SECRET=your-super-secure-jwt-secret-key-here
    PORT=8090
    ```
+   - **Note**: Railway automatically provides `DATABASE_URL` when you add PostgreSQL
 
 5. **Deploy**:
    - Railway will automatically build and deploy your app
@@ -96,10 +98,8 @@ fly deploy
 For all platforms, set these environment variables:
 
 ```bash
-# Database
-DATABASE_URL=jdbc:postgresql://your-db-host:5432/your-db-name
-DB_USERNAME=your-username
-DB_PASSWORD=your-password
+# Database (Railway provides DATABASE_URL automatically)
+DATABASE_URL=postgresql://username:password@host:port/database
 
 # JWT
 JWT_SECRET=your-super-secure-jwt-secret-key-here
@@ -189,6 +189,7 @@ Open: `https://your-app-url/api/swagger-ui.html`
    - ✅ **Fixed**: Dockerfile no longer requires Maven wrapper files
 
 2. **Database Connection**:
+   - ✅ **Fixed**: Added `DatabaseConfig.java` to handle Railway's DATABASE_URL
    - Verify `DATABASE_URL` format
    - Check database credentials
 
@@ -222,6 +223,14 @@ failed to calculate checksum of ref... "/mvnw": not found
 ```
 
 **Solution**: ✅ **Fixed** - The Dockerfile has been updated to work without Maven wrapper files.
+
+#### Database Connection Issues
+If you see errors like:
+```
+Connection to localhost:5432 refused. Check that the hostname and port are correct
+```
+
+**Solution**: ✅ **Fixed** - Added `DatabaseConfig.java` to properly parse Railway's `DATABASE_URL` environment variable.
 
 #### Build Timeout
 If the build takes too long:
